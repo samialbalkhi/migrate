@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::table('doctors', function (Blueprint $table) {
 
-            $table->string("Patients")->after("doctor");
+            // $table->unsignedBigInteger(column:'Patients_id');
+            // $table->foreign("Patients_id")->references(column:"id")->on(table:"users");
+            $table->foreignId(column:"Patients_id")->constrained(table:"users")->cascadeOnDelete();
         });
     }
 
